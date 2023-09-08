@@ -3,7 +3,7 @@ import "./styles.css";
 
 const faqs = [
   {
-    title: "Where are thesdasfe chairs assembled?",
+    title: "Where are these chairs assembled?",
     text:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus."
   },
@@ -28,26 +28,29 @@ export default function App() {
 }
 
 function Accordion({ data }) {
+  const [curOpen, setCurOpen] = useState(null);
   return (
     <div className="accordion">
       {data.map((e, i) => (
-        <Item num={i} title={e.title} text={e.text} key={e.title} />
+        <Item num={i} title={e.title} key={e.title} curOpen={curOpen} onOpen={setCurOpen}>{e.text}</Item>
       ))}
     </div>
   );
 }
 
-function Item({ num, title, text }) {
-  const [isOpen, setIsOpen] = useState(false);
+function Item({ num, title, text, curOpen,onOpen,children }) {
+  const isOpen = num===curOpen
   function handleToggle() {
-    setIsOpen((cur) => !cur);
+   
+      onOpen(isOpen ? null: num);
+    
   }
   return (
     <div className={`item ${isOpen ? "open" : ""}`} onClick={handleToggle}>
       <p className="number">0{num + 1}</p>
       <p className="title">{title}</p>
       <p className="icon">{isOpen ? "-" : "+"}</p>
-      {isOpen && <div className="content-box">{text}</div>}
+      {isOpen && <div className="content-box">{children}</div>}
     </div>
   );
 }
