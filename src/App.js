@@ -3,7 +3,7 @@ import "./styles.css";
 
 const faqs = [
   {
-    title: "Where are these chairs assembled?",
+    title: "Where are thesdasfe chairs assembled?",
     text:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus."
   },
